@@ -163,7 +163,10 @@
       const cx = lerp(geo.navCx, geo.cardCx, e);
       const k = clamp(p * 1.5);
       const rgba = FROM.map((v, i) => (i < 3 ? Math.round(lerp(v, TO[i], k)) : +lerp(v, TO[i], k).toFixed(3)));
-      shell.style.transform = `translate3d(${cx - w / 2}px, ${geo.top}px, 0)`;
+      /* Tam açıldıktan sonra kart sayfadaki yerini takip eder: kaydırmaya devam
+         edilirse yukarı kayar ve footer'ın üstünü kapatmaz */
+      const y = Math.min(geo.top, card.getBoundingClientRect().top);
+      shell.style.transform = `translate3d(${cx - w / 2}px, ${y}px, 0)`;
       shell.style.width = `${w}px`;
       shell.style.height = `${h}px`;
       shell.style.backgroundColor = `rgba(${rgba.join(",")})`;
