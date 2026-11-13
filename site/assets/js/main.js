@@ -211,6 +211,17 @@
     const release = () => { snapping = false; };
     ["wheel", "touchstart", "keydown"].forEach((ev) => window.addEventListener(ev, release, { passive: true }));
 
+    /* "#iletisim" bağlantıları kartın tam açık olduğu noktaya götürür */
+    document.querySelectorAll('a[href="#iletisim"]').forEach((a) => {
+      a.addEventListener("click", (e) => {
+        e.preventDefault();
+        const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+        snapping = true;
+        window.scrollTo({ top: Math.min(geo.end, maxScroll), behavior: "smooth" });
+        history.replaceState(null, "", "#iletisim");
+      });
+    });
+
     const update = () => {
       const y = window.scrollY;
       if (y !== lastY && !snapping) dir = y > lastY ? 1 : -1;
