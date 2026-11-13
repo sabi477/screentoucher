@@ -196,7 +196,7 @@ ul, ol { list-style: none; }
 .hero__title .line { display: block; color: inherit; }
 .hero__title .line + .line { color: var(--cream-muted); }
 @media (min-width: 768px) { .hero__title .line { white-space: nowrap; } }
-.hero__inner--low { padding-top: clamp(48px, 12vh, 140px); }
+.hero__inner--low { align-self: end; margin-bottom: clamp(56px, 7vh, 80px); }   /* başlık kartın altına yakın, alt etiketlerin hemen üstünde */
 .hero__cta { margin-top: var(--s-6); }
 .hero__lead { margin: var(--s-5) auto 0; max-width: 40ch; color: var(--cream-muted); font-size: var(--fs-body); }
 .hero__foot {
